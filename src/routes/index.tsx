@@ -187,6 +187,55 @@ function Services() {
   );
 }
 
+/* ---------- IOT FOCUS (inspired by hashstudioz IoT breakdown) ---------- */
+const iotServices = [
+  { icon: Radio, name: "IoT Consulting", items: ["Feasibility & PoC", "Architecture design", "Technology selection", "Security consulting"] },
+  { icon: Factory, name: "Industrial IoT (IIoT)", items: ["Real-time asset monitoring", "SCADA / MES / ERP", "Predictive maintenance", "Edge analytics"] },
+  { icon: CircuitBoard, name: "IoT Product Development", items: ["Atmel · Microchip · ESP32", "Nordic · STM32 · Raspberry Pi", "BLE · Wi-Fi · LoRa · NB-IoT", "4G / LTE-M / Cat-M1"] },
+  { icon: Gauge, name: "IoT Dashboards", items: ["Real-time data visualisation", "Custom KPIs & alerts", "Multi-tenant portals", "Analytics integration"] },
+  { icon: Wrench, name: "PCB & Circuit Design", items: ["Schematic capture", "Signal & power integrity", "Thermal analysis", "DFM-ready Gerbers"] },
+  { icon: Cpu, name: "Firmware & Protocols", items: ["MQTT · OPC-UA · Modbus", "Bootloaders + secure OTA", "Device drivers · BSPs", "Power management"] },
+  { icon: PlugZap, name: "Cloud & IoT Platforms", items: ["AWS IoT · Azure IoT · GCP", "ThingsBoard · Balena", "Device management at scale", "Data pipelines"] },
+  { icon: Boxes, name: "Enterprise Mobility", items: ["React Native · Flutter", "iOS · Android · Cross-platform", "Field-worker apps", "Offline-first sync"] },
+];
+function IoTFocus() {
+  return (
+    <section className="section bg-navy-deep text-white border-b border-white/10">
+      <div className="container-x">
+        <div className="grid md:grid-cols-[1fr_1.2fr] gap-6 md:gap-8 items-end">
+          <div>
+            <div className="eyebrow text-accent-amber">IoT development focus</div>
+            <h2 className="mt-3 text-2xl md:text-4xl lg:text-[2.6rem] font-semibold tracking-tight leading-[1.1]">
+              End-to-end IoT — from silicon to cloud dashboard.
+            </h2>
+          </div>
+          <p className="text-sm md:text-base text-white/70 leading-relaxed max-w-xl">
+            Purpose-built IoT engineering for enterprises and startups: connected hardware, secure firmware,
+            edge intelligence, cloud integration and real-time analytics — under one accountable team.
+          </p>
+        </div>
+        <div className="mt-8 md:mt-14 grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10">
+          {iotServices.map(({ icon: Icon, name, items }) => (
+            <div key={name} className="bg-navy-deep p-4 md:p-6 hover:bg-white/5 transition-colors">
+              <Icon className="h-5 w-5 md:h-6 md:w-6 text-accent-amber" strokeWidth={1.5} />
+              <h3 className="mt-3 md:mt-4 text-sm md:text-base font-semibold leading-tight">{name}</h3>
+              <ul className="mt-2 md:mt-3 space-y-1 md:space-y-1.5 text-[11px] md:text-xs text-white/70 leading-snug">
+                {items.map((i) => (<li key={i} className="flex gap-1.5"><span className="mt-1 h-1 w-1 rounded-full bg-accent-amber shrink-0" />{i}</li>))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <div className="mt-8 md:mt-12 flex flex-wrap items-center gap-3">
+          <Link to="/services" className="btn-primary bg-accent-amber !text-navy-deep border-accent-amber hover:bg-accent-amber/90">
+            Explore IoT capabilities <ArrowRight className="h-4 w-4" />
+          </Link>
+          <Link to="/contact" className="btn-ghost-light">Discuss your IoT project <ArrowUpRight className="h-4 w-4" /></Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function SectionHead({ eyebrow, title, intro }: { eyebrow: string; title: string; intro?: string }) {
   return (
     <div className="grid md:grid-cols-[1fr_1.2fr] gap-8 items-end">
