@@ -31,6 +31,7 @@ function Home() {
       <Hero />
       <TrustBar />
       <Services />
+      <IoTFocus />
       <Industries />
       <Products />
       <Process />
@@ -53,7 +54,7 @@ function Hero() {
   return (
     <section className="relative overflow-hidden bg-white border-b border-hairline">
       <div className="absolute inset-0 hairline-grid opacity-60 pointer-events-none" />
-      <div className="container-x relative grid lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-16 items-center py-16 md:py-24 lg:py-28">
+      <div className="container-x relative grid lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-16 items-center py-12 md:py-20 lg:py-28">
         <div>
           <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-navy border border-hairline px-3 py-1.5 bg-white" style={{ borderRadius: 2 }}>
             <span className="h-1.5 w-1.5 rounded-full bg-accent-amber" />
@@ -169,14 +170,14 @@ function Services() {
           title="Nine engineering disciplines. One accountable team."
           intro="You get a single senior engineer as your point of contact and a team that has already shipped in your domain — not junior developers learning on your project."
         />
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="mt-8 md:mt-14 grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
           {serviceList.map(({ icon: Icon, name, desc }) => (
-            <div key={name} className="card-surface p-6 flex flex-col">
+            <div key={name} className="card-surface p-4 md:p-6 flex flex-col">
               <Icon className="h-6 w-6 text-navy-deep" strokeWidth={1.5} />
-              <h3 className="mt-5 text-base font-semibold text-navy-deep">{name}</h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed flex-1">{desc}</p>
-              <Link to="/services" className="mt-5 inline-flex items-center gap-1 text-xs font-mono uppercase tracking-widest text-navy hover:text-navy-deep">
-                Learn more <ArrowRight className="h-3.5 w-3.5" />
+              <h3 className="mt-3 md:mt-5 text-[13px] md:text-base font-semibold text-navy-deep leading-tight">{name}</h3>
+              <p className="mt-1.5 md:mt-2 text-[12px] md:text-sm text-muted-foreground leading-relaxed flex-1 hidden md:block">{desc}</p>
+              <Link to="/services" className="mt-3 md:mt-5 inline-flex items-center gap-1 text-[10px] md:text-xs font-mono uppercase tracking-widest text-navy hover:text-navy-deep">
+                Learn more <ArrowRight className="h-3 w-3 md:h-3.5 md:w-3.5" />
               </Link>
             </div>
           ))}
@@ -222,12 +223,12 @@ function Industries() {
           title="Domain engineers, not generalists."
           intro="Every project is staffed with engineers who have already shipped in your regulatory and application environment — no learning curve billed to your budget."
         />
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-px bg-hairline border border-hairline" style={{ borderRadius: 2 }}>
+        <div className="mt-8 md:mt-14 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-px bg-hairline border border-hairline" style={{ borderRadius: 2 }}>
           {industries.map(({ icon: Icon, name, note }) => (
-            <div key={name} className="bg-white p-6 hover:bg-navy-deep hover:text-white transition-colors group">
-              <Icon className="h-6 w-6 text-navy group-hover:text-white transition-colors" strokeWidth={1.5} />
-              <div className="mt-4 font-semibold text-navy-deep group-hover:text-white text-[15px]">{name}</div>
-              <div className="mt-1 text-xs text-muted-foreground group-hover:text-white/70">{note}</div>
+            <div key={name} className="bg-white p-4 md:p-6 hover:bg-navy-deep hover:text-white transition-colors group">
+              <Icon className="h-5 w-5 md:h-6 md:w-6 text-navy group-hover:text-white transition-colors" strokeWidth={1.5} />
+              <div className="mt-3 md:mt-4 font-semibold text-navy-deep group-hover:text-white text-[13px] md:text-[15px] leading-tight">{name}</div>
+              <div className="mt-1 text-[11px] md:text-xs text-muted-foreground group-hover:text-white/70 leading-snug">{note}</div>
             </div>
           ))}
         </div>
