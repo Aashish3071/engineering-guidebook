@@ -161,8 +161,14 @@
 }
 
 @utility section {
-  padding-block: 5rem;
-  @media (min-width: 768px) { padding-block: 7rem; }
+  padding-block: 3rem;
+  @media (min-width: 768px) { padding-block: 5rem; }
+  @media (min-width: 1024px) { padding-block: 7rem; }
+}
+
+@utility section-tight {
+  padding-block: 2.5rem;
+  @media (min-width: 768px) { padding-block: 4rem; }
 }
 
 @utility card-surface {

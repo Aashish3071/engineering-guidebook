@@ -31,6 +31,7 @@ function Home() {
       <Hero />
       <TrustBar />
       <Services />
+      <IoTFocus />
       <Industries />
       <Products />
       <Process />
@@ -53,7 +54,7 @@ function Hero() {
   return (
     <section className="relative overflow-hidden bg-white border-b border-hairline">
       <div className="absolute inset-0 hairline-grid opacity-60 pointer-events-none" />
-      <div className="container-x relative grid lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-16 items-center py-16 md:py-24 lg:py-28">
+      <div className="container-x relative grid lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-16 items-center py-12 md:py-20 lg:py-28">
         <div>
           <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-navy border border-hairline px-3 py-1.5 bg-white" style={{ borderRadius: 2 }}>
             <span className="h-1.5 w-1.5 rounded-full bg-accent-amber" />
@@ -169,17 +170,66 @@ function Services() {
           title="Nine engineering disciplines. One accountable team."
           intro="You get a single senior engineer as your point of contact and a team that has already shipped in your domain — not junior developers learning on your project."
         />
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="mt-8 md:mt-8 md:mt-14 grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
           {serviceList.map(({ icon: Icon, name, desc }) => (
-            <div key={name} className="card-surface p-6 flex flex-col">
+            <div key={name} className="card-surface p-4 md:p-6 flex flex-col">
               <Icon className="h-6 w-6 text-navy-deep" strokeWidth={1.5} />
-              <h3 className="mt-5 text-base font-semibold text-navy-deep">{name}</h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed flex-1">{desc}</p>
-              <Link to="/services" className="mt-5 inline-flex items-center gap-1 text-xs font-mono uppercase tracking-widest text-navy hover:text-navy-deep">
-                Learn more <ArrowRight className="h-3.5 w-3.5" />
+              <h3 className="mt-3 md:mt-5 text-[13px] md:text-base font-semibold text-navy-deep leading-tight">{name}</h3>
+              <p className="mt-1.5 md:mt-2 text-[12px] md:text-sm text-muted-foreground leading-relaxed flex-1 hidden md:block">{desc}</p>
+              <Link to="/services" className="mt-3 md:mt-5 inline-flex items-center gap-1 text-[10px] md:text-xs font-mono uppercase tracking-widest text-navy hover:text-navy-deep">
+                Learn more <ArrowRight className="h-3 w-3 md:h-3.5 md:w-3.5" />
               </Link>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- IOT FOCUS (inspired by hashstudioz IoT breakdown) ---------- */
+const iotServices = [
+  { icon: Radio, name: "IoT Consulting", items: ["Feasibility & PoC", "Architecture design", "Technology selection", "Security consulting"] },
+  { icon: Factory, name: "Industrial IoT (IIoT)", items: ["Real-time asset monitoring", "SCADA / MES / ERP", "Predictive maintenance", "Edge analytics"] },
+  { icon: CircuitBoard, name: "IoT Product Development", items: ["Atmel · Microchip · ESP32", "Nordic · STM32 · Raspberry Pi", "BLE · Wi-Fi · LoRa · NB-IoT", "4G / LTE-M / Cat-M1"] },
+  { icon: Gauge, name: "IoT Dashboards", items: ["Real-time data visualisation", "Custom KPIs & alerts", "Multi-tenant portals", "Analytics integration"] },
+  { icon: Wrench, name: "PCB & Circuit Design", items: ["Schematic capture", "Signal & power integrity", "Thermal analysis", "DFM-ready Gerbers"] },
+  { icon: Cpu, name: "Firmware & Protocols", items: ["MQTT · OPC-UA · Modbus", "Bootloaders + secure OTA", "Device drivers · BSPs", "Power management"] },
+  { icon: PlugZap, name: "Cloud & IoT Platforms", items: ["AWS IoT · Azure IoT · GCP", "ThingsBoard · Balena", "Device management at scale", "Data pipelines"] },
+  { icon: Boxes, name: "Enterprise Mobility", items: ["React Native · Flutter", "iOS · Android · Cross-platform", "Field-worker apps", "Offline-first sync"] },
+];
+function IoTFocus() {
+  return (
+    <section className="section bg-navy-deep text-white border-b border-white/10">
+      <div className="container-x">
+        <div className="grid md:grid-cols-[1fr_1.2fr] gap-6 md:gap-8 items-end">
+          <div>
+            <div className="eyebrow text-accent-amber">IoT development focus</div>
+            <h2 className="mt-3 text-2xl md:text-4xl lg:text-[2.6rem] font-semibold tracking-tight leading-[1.1]">
+              End-to-end IoT — from silicon to cloud dashboard.
+            </h2>
+          </div>
+          <p className="text-sm md:text-base text-white/70 leading-relaxed max-w-xl">
+            Purpose-built IoT engineering for enterprises and startups: connected hardware, secure firmware,
+            edge intelligence, cloud integration and real-time analytics — under one accountable team.
+          </p>
+        </div>
+        <div className="mt-8 md:mt-8 md:mt-14 grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10">
+          {iotServices.map(({ icon: Icon, name, items }) => (
+            <div key={name} className="bg-navy-deep p-4 md:p-6 hover:bg-white/5 transition-colors">
+              <Icon className="h-5 w-5 md:h-6 md:w-6 text-accent-amber" strokeWidth={1.5} />
+              <h3 className="mt-3 md:mt-4 text-sm md:text-base font-semibold leading-tight">{name}</h3>
+              <ul className="mt-2 md:mt-3 space-y-1 md:space-y-1.5 text-[11px] md:text-xs text-white/70 leading-snug">
+                {items.map((i) => (<li key={i} className="flex gap-1.5"><span className="mt-1 h-1 w-1 rounded-full bg-accent-amber shrink-0" />{i}</li>))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <div className="mt-8 md:mt-12 flex flex-wrap items-center gap-3">
+          <Link to="/services" className="btn-primary bg-accent-amber !text-navy-deep border-accent-amber hover:bg-accent-amber/90">
+            Explore IoT capabilities <ArrowRight className="h-4 w-4" />
+          </Link>
+          <Link to="/contact" className="btn-ghost-light">Discuss your IoT project <ArrowUpRight className="h-4 w-4" /></Link>
         </div>
       </div>
     </section>
@@ -222,12 +272,12 @@ function Industries() {
           title="Domain engineers, not generalists."
           intro="Every project is staffed with engineers who have already shipped in your regulatory and application environment — no learning curve billed to your budget."
         />
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-px bg-hairline border border-hairline" style={{ borderRadius: 2 }}>
+        <div className="mt-8 md:mt-8 md:mt-14 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-px bg-hairline border border-hairline" style={{ borderRadius: 2 }}>
           {industries.map(({ icon: Icon, name, note }) => (
-            <div key={name} className="bg-white p-6 hover:bg-navy-deep hover:text-white transition-colors group">
-              <Icon className="h-6 w-6 text-navy group-hover:text-white transition-colors" strokeWidth={1.5} />
-              <div className="mt-4 font-semibold text-navy-deep group-hover:text-white text-[15px]">{name}</div>
-              <div className="mt-1 text-xs text-muted-foreground group-hover:text-white/70">{note}</div>
+            <div key={name} className="bg-white p-4 md:p-6 hover:bg-navy-deep hover:text-white transition-colors group">
+              <Icon className="h-5 w-5 md:h-6 md:w-6 text-navy group-hover:text-white transition-colors" strokeWidth={1.5} />
+              <div className="mt-3 md:mt-4 font-semibold text-navy-deep group-hover:text-white text-[13px] md:text-[15px] leading-tight">{name}</div>
+              <div className="mt-1 text-[11px] md:text-xs text-muted-foreground group-hover:text-white/70 leading-snug">{note}</div>
             </div>
           ))}
         </div>
@@ -251,7 +301,7 @@ function Products() {
           title="Pre-engineered building blocks to compress your timeline."
           intro="License-ready hardware and firmware modules our clients white-label to reach market 30–50% faster than a from-scratch build."
         />
-        <div className="mt-14 grid lg:grid-cols-3 gap-4">
+        <div className="mt-8 md:mt-14 grid lg:grid-cols-3 gap-4">
           {products.map((p, i) => (
             <div key={p.name} className="card-surface overflow-hidden flex flex-col">
               <div className="aspect-[4/3] bg-surface border-b border-hairline overflow-hidden">
@@ -313,7 +363,7 @@ function Process() {
           </p>
         </div>
 
-        <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10">
+        <div className="mt-8 md:mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10">
           {steps.map(([n, t, d]) => (
             <div key={n} className="bg-navy-deep p-6 hover:bg-white/5 transition-colors">
               <div className="font-mono text-xs text-accent-amber tracking-widest">{n}</div>
@@ -345,7 +395,7 @@ function Capabilities() {
           title="A full engineering stack under one roof."
           intro="No hand-offs between vendors, no lost context. One team owns your product from schematic to serial number."
         />
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="mt-8 md:mt-14 grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
           {groups.map((g) => (
             <div key={g.title} className="card-surface p-6">
               <div className="flex items-center justify-between mb-4 pb-4 border-b border-hairline">
@@ -379,7 +429,7 @@ function TechStack() {
     <section className="section bg-white border-b border-hairline">
       <div className="container-x">
         <SectionHead eyebrow="Technology stack" title="Best-in-class tooling, aligned to your existing workflow." />
-        <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8">
+        <div className="mt-8 md:mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8">
           {stack.map(([title, items]) => (
             <div key={title as string}>
               <div className="text-xs font-mono uppercase tracking-widest text-navy border-b border-hairline pb-2">{title}</div>
@@ -451,7 +501,7 @@ function WhyChooseUs() {
           eyebrow="Why clients choose Axiom"
           title="The reasons OEMs pick us over the big consultancies — and keep coming back."
         />
-        <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="mt-8 md:mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {items.map(([Icon, t, d]) => (
             <div key={t} className="card-surface p-6">
               <Icon className="h-6 w-6 text-navy-deep" strokeWidth={1.5} />
@@ -501,7 +551,7 @@ function CaseStudies() {
           title="Real projects. Measurable outcomes."
           intro="A selection of recent, representative work. Full case files (with client permission) available on request under NDA."
         />
-        <div className="mt-14 grid gap-4">
+        <div className="mt-8 md:mt-14 grid gap-4">
           {cs.map((c) => (
             <article key={c.title} className="card-surface p-6 md:p-8 grid lg:grid-cols-[1fr_1.5fr_1fr] gap-8">
               <div>
