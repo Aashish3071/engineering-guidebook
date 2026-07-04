@@ -50,12 +50,8 @@ function Contact() {
               <div className="eyebrow">Offices</div>
               <ul className="mt-3 space-y-3 text-sm">
                 <li>
-                  <div className="font-semibold text-navy-deep">Bengaluru · India</div>
-                  <div className="text-muted-foreground">Engineering & prototyping HQ</div>
-                </li>
-                <li>
-                  <div className="font-semibold text-navy-deep">Delhi · India</div>
-                  <div className="text-muted-foreground">Corporate office B 80 okhla phase 1, first floor delhi 110020</div>
+                  <div className="font-semibold text-navy-deep">Corporate Office</div>
+                  <div className="text-muted-foreground">B 80 First Floor, Okhla Phase 1, Delhi 110020</div>
                 </li>
               </ul>
             </div>
