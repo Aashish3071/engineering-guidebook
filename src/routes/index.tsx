@@ -170,7 +170,7 @@ function Services() {
           title="Nine engineering disciplines. One accountable team."
           intro="You get a single senior engineer as your point of contact and a team that has already shipped in your domain — not junior developers learning on your project."
         />
-        <div className="mt-8 md:mt-14 grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+        <div className="mt-8 md:mt-8 md:mt-14 grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
           {serviceList.map(({ icon: Icon, name, desc }) => (
             <div key={name} className="card-surface p-4 md:p-6 flex flex-col">
               <Icon className="h-6 w-6 text-navy-deep" strokeWidth={1.5} />
@@ -214,7 +214,7 @@ function IoTFocus() {
             edge intelligence, cloud integration and real-time analytics — under one accountable team.
           </p>
         </div>
-        <div className="mt-8 md:mt-14 grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10">
+        <div className="mt-8 md:mt-8 md:mt-14 grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10">
           {iotServices.map(({ icon: Icon, name, items }) => (
             <div key={name} className="bg-navy-deep p-4 md:p-6 hover:bg-white/5 transition-colors">
               <Icon className="h-5 w-5 md:h-6 md:w-6 text-accent-amber" strokeWidth={1.5} />
@@ -272,7 +272,7 @@ function Industries() {
           title="Domain engineers, not generalists."
           intro="Every project is staffed with engineers who have already shipped in your regulatory and application environment — no learning curve billed to your budget."
         />
-        <div className="mt-8 md:mt-14 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-px bg-hairline border border-hairline" style={{ borderRadius: 2 }}>
+        <div className="mt-8 md:mt-8 md:mt-14 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-px bg-hairline border border-hairline" style={{ borderRadius: 2 }}>
           {industries.map(({ icon: Icon, name, note }) => (
             <div key={name} className="bg-white p-4 md:p-6 hover:bg-navy-deep hover:text-white transition-colors group">
               <Icon className="h-5 w-5 md:h-6 md:w-6 text-navy group-hover:text-white transition-colors" strokeWidth={1.5} />
@@ -301,7 +301,7 @@ function Products() {
           title="Pre-engineered building blocks to compress your timeline."
           intro="License-ready hardware and firmware modules our clients white-label to reach market 30–50% faster than a from-scratch build."
         />
-        <div className="mt-14 grid lg:grid-cols-3 gap-4">
+        <div className="mt-8 md:mt-14 grid lg:grid-cols-3 gap-4">
           {products.map((p, i) => (
             <div key={p.name} className="card-surface overflow-hidden flex flex-col">
               <div className="aspect-[4/3] bg-surface border-b border-hairline overflow-hidden">
@@ -363,7 +363,7 @@ function Process() {
           </p>
         </div>
 
-        <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10">
+        <div className="mt-8 md:mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10">
           {steps.map(([n, t, d]) => (
             <div key={n} className="bg-navy-deep p-6 hover:bg-white/5 transition-colors">
               <div className="font-mono text-xs text-accent-amber tracking-widest">{n}</div>
@@ -395,7 +395,7 @@ function Capabilities() {
           title="A full engineering stack under one roof."
           intro="No hand-offs between vendors, no lost context. One team owns your product from schematic to serial number."
         />
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="mt-8 md:mt-14 grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
           {groups.map((g) => (
             <div key={g.title} className="card-surface p-6">
               <div className="flex items-center justify-between mb-4 pb-4 border-b border-hairline">
@@ -429,7 +429,7 @@ function TechStack() {
     <section className="section bg-white border-b border-hairline">
       <div className="container-x">
         <SectionHead eyebrow="Technology stack" title="Best-in-class tooling, aligned to your existing workflow." />
-        <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8">
+        <div className="mt-8 md:mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8">
           {stack.map(([title, items]) => (
             <div key={title as string}>
               <div className="text-xs font-mono uppercase tracking-widest text-navy border-b border-hairline pb-2">{title}</div>
@@ -501,7 +501,7 @@ function WhyChooseUs() {
           eyebrow="Why clients choose Axiom"
           title="The reasons OEMs pick us over the big consultancies — and keep coming back."
         />
-        <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="mt-8 md:mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {items.map(([Icon, t, d]) => (
             <div key={t} className="card-surface p-6">
               <Icon className="h-6 w-6 text-navy-deep" strokeWidth={1.5} />
@@ -551,7 +551,7 @@ function CaseStudies() {
           title="Real projects. Measurable outcomes."
           intro="A selection of recent, representative work. Full case files (with client permission) available on request under NDA."
         />
-        <div className="mt-14 grid gap-4">
+        <div className="mt-8 md:mt-14 grid gap-4">
           {cs.map((c) => (
             <article key={c.title} className="card-surface p-6 md:p-8 grid lg:grid-cols-[1fr_1.5fr_1fr] gap-8">
               <div>
