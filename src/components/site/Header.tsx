@@ -4,11 +4,11 @@ import { Menu, X, ArrowRight } from "lucide-react";
 
 const nav = [
   { to: "/", label: "Home" },
-  { to: "/services", label: "Services" },
-  { to: "/industries", label: "Industries" },
-  { to: "/process", label: "Process" },
+  { to: "/services/pcb-design", label: "PCB Design" },
+  { to: "/services/iot-hardware", label: "IoT Hardware" },
+  { to: "/services/embedded-firmware", label: "Embedded Firmware" },
+  { to: "/case-studies", label: "Case Studies" },
   { to: "/about", label: "About" },
-  { to: "/contact", label: "Contact" },
 ] as const;
 
 export function Header() {

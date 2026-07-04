@@ -1,15 +1,34 @@
 import { useState } from "react";
-import { ArrowRight, CheckCircle2, ShieldCheck, Clock, Lock } from "lucide-react";
+import { ArrowRight, CheckCircle2, ShieldCheck, Clock, Lock, AlertCircle } from "lucide-react";
 
 export function InquiryForm({ compact = false }: { compact?: boolean }) {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setStatus("submitting");
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch("https://formspree.io/f/YOUR_FORMSPREE_ID", {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+
+      if (res.ok) {
+        setStatus("success");
+        form.reset();
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
-  if (submitted) {
+  if (status === "success") {
     return (
       <div className="card-surface p-8 md:p-10 text-center">
         <div className="mx-auto grid h-12 w-12 place-items-center bg-navy-deep text-white" style={{ borderRadius: 2 }}>
@@ -20,6 +39,27 @@ export function InquiryForm({ compact = false }: { compact?: boolean }) {
           A senior engineer from our team will review your requirements and reach out within one business day
           with next steps and an NDA if required.
         </p>
+      </div>
+    );
+  }
+
+  if (status === "error") {
+    return (
+      <div className="card-surface p-8 md:p-10 text-center">
+        <div className="mx-auto grid h-12 w-12 place-items-center bg-destructive text-white" style={{ borderRadius: 2 }}>
+          <AlertCircle className="h-6 w-6" />
+        </div>
+        <h3 className="mt-5 text-xl font-semibold text-navy-deep">Something went wrong</h3>
+        <p className="mt-2 text-sm text-muted-foreground max-w-md mx-auto">
+          We couldn't send your request. Please email us directly at{" "}
+          <a href="mailto:engineering@axiom-electronics.com" className="text-navy-deep underline underline-offset-4">
+            engineering@axiom-electronics.com
+          </a>{" "}
+          or try again.
+        </p>
+        <button onClick={() => setStatus("idle")} className="btn-outline mt-6">
+          Try again
+        </button>
       </div>
     );
   }
@@ -42,23 +82,24 @@ export function InquiryForm({ compact = false }: { compact?: boolean }) {
         <Field label="Country *" name="country" placeholder="United States" required />
 
         <Select label="Industry *" name="industry" required options={[
-          "Industrial Automation","Automotive / EV","Medical Electronics","Consumer Electronics",
-          "Energy & Utilities","Agriculture / AgriTech","Smart Home","Robotics","Telecom","Other",
+          "Industrial Automation", "Automotive / EV", "Medical Electronics", "Consumer Electronics",
+          "Energy & Utilities", "Agriculture / AgriTech", "Smart Home", "Robotics", "Telecom", "Other",
         ]} />
         <Select label="Project type *" name="projectType" required options={[
-          "New product development","Prototype only","Redesign / cost reduction","Migration to production","Consultation only",
+          "New product development", "Prototype only", "Redesign / cost reduction", "Sensor / IoT solution", "Consultation only",
         ]} />
 
         <Select label="Service required *" name="service" required options={[
-          "PCB Design & Layout","Embedded Firmware","Hardware Design","IoT Solution","Product Engineering (Turnkey)","Manufacturing Support","Other",
+          "PCB Design & Layout", "IoT Hardware Development", "Embedded Firmware", "Sensor Design & Integration",
+          "Hardware Architecture Consulting", "Prototype Development", "Product Engineering (Turnkey)", "Other",
         ]} />
         <Select label="Expected timeline" name="timeline" options={[
-          "< 4 weeks","1–3 months","3–6 months","6+ months","Not sure yet",
+          "< 4 weeks", "1–3 months", "3–6 months", "6+ months", "Not sure yet",
         ]} />
 
         {!compact && (
           <Select label="Estimated budget (optional)" name="budget" options={[
-            "< $10k","$10k – $50k","$50k – $150k","$150k – $500k","$500k+","Prefer to discuss",
+            "< $10k", "$10k – $50k", "$50k – $150k", "$150k – $500k", "$500k+", "Prefer to discuss",
           ]} />
         )}
 
@@ -88,8 +129,8 @@ export function InquiryForm({ compact = false }: { compact?: boolean }) {
       </label>
 
       <div className="mt-6 flex flex-col sm:flex-row sm:items-center gap-3">
-        <button type="submit" className="btn-primary">
-          Request Consultation <ArrowRight className="h-4 w-4" />
+        <button type="submit" className="btn-primary" disabled={status === "submitting"}>
+          {status === "submitting" ? "Sending…" : "Request Consultation"} <ArrowRight className="h-4 w-4" />
         </button>
         <div className="flex flex-wrap gap-4 text-xs text-muted-foreground">
           <span className="inline-flex items-center gap-1.5"><Clock className="h-3.5 w-3.5" /> Response within 1 business day</span>

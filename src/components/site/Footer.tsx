@@ -26,12 +26,9 @@ export function Footer() {
           </div>
 
           <FooterCol title="Services" links={[
-            ["PCB Design & Layout", "/services"],
-            ["Embedded Firmware", "/services"],
-            ["Hardware Design", "/services"],
-            ["IoT Solutions", "/services"],
-            ["Prototyping", "/services"],
-            ["Manufacturing Support", "/services"],
+            ["PCB Design & Layout", "/services/pcb-design"],
+            ["IoT Hardware Development", "/services/iot-hardware"],
+            ["Embedded Firmware", "/services/embedded-firmware"],
           ]} />
           <FooterCol title="Company" links={[
             ["About", "/about"],
@@ -40,9 +37,7 @@ export function Footer() {
             ["Contact", "/contact"],
           ]} />
           <FooterCol title="Resources" links={[
-            ["Case Studies", "/#case-studies"],
-            ["Capabilities", "/#capabilities"],
-            ["FAQs", "/#faqs"],
+            ["Case Studies", "/case-studies"],
             ["Request Consultation", "/contact"],
           ]} />
         </div>

@@ -62,12 +62,12 @@ function Contact() {
             <div className="border-t border-hairline pt-6">
               <div className="eyebrow">Not ready to inquire?</div>
               <p className="mt-3 text-sm text-muted-foreground">
-                Review our <Link to="/services" className="text-navy-deep underline underline-offset-4">services</Link>,{" "}
+                Review our <Link to="/services/pcb-design" className="text-navy-deep underline underline-offset-4">PCB design capabilities</Link>,{" "}
                 <Link to="/process" className="text-navy-deep underline underline-offset-4">engineering process</Link> or{" "}
                 <Link to="/" hash="case-studies" className="text-navy-deep underline underline-offset-4">case studies</Link>.
               </p>
-              <Link to="/services" className="mt-5 inline-flex items-center gap-1 text-xs font-mono uppercase tracking-widest text-navy-deep">
-                Explore services <ArrowRight className="h-3.5 w-3.5" />
+              <Link to="/" className="mt-5 inline-flex items-center gap-1 text-xs font-mono uppercase tracking-widest text-navy-deep">
+                Back to home <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
           </aside>

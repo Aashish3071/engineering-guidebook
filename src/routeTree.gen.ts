@@ -9,18 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ProcessRouteImport } from './routes/process'
 import { Route as IndustriesRouteImport } from './routes/industries'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CaseStudiesRouteImport } from './routes/case-studies'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicesPcbDesignRouteImport } from './routes/services/pcb-design'
+import { Route as ServicesIotHardwareRouteImport } from './routes/services/iot-hardware'
+import { Route as ServicesEmbeddedFirmwareRouteImport } from './routes/services/embedded-firmware'
 
-const ServicesRoute = ServicesRouteImport.update({
-  id: '/services',
-  path: '/services',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ProcessRoute = ProcessRouteImport.update({
   id: '/process',
   path: '/process',
@@ -36,6 +34,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CaseStudiesRoute = CaseStudiesRouteImport.update({
+  id: '/case-studies',
+  path: '/case-studies',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -46,71 +49,107 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesPcbDesignRoute = ServicesPcbDesignRouteImport.update({
+  id: '/services/pcb-design',
+  path: '/services/pcb-design',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesIotHardwareRoute = ServicesIotHardwareRouteImport.update({
+  id: '/services/iot-hardware',
+  path: '/services/iot-hardware',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesEmbeddedFirmwareRoute =
+  ServicesEmbeddedFirmwareRouteImport.update({
+    id: '/services/embedded-firmware',
+    path: '/services/embedded-firmware',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
   '/industries': typeof IndustriesRoute
   '/process': typeof ProcessRoute
-  '/services': typeof ServicesRoute
+  '/services/embedded-firmware': typeof ServicesEmbeddedFirmwareRoute
+  '/services/iot-hardware': typeof ServicesIotHardwareRoute
+  '/services/pcb-design': typeof ServicesPcbDesignRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
   '/industries': typeof IndustriesRoute
   '/process': typeof ProcessRoute
-  '/services': typeof ServicesRoute
+  '/services/embedded-firmware': typeof ServicesEmbeddedFirmwareRoute
+  '/services/iot-hardware': typeof ServicesIotHardwareRoute
+  '/services/pcb-design': typeof ServicesPcbDesignRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
   '/industries': typeof IndustriesRoute
   '/process': typeof ProcessRoute
-  '/services': typeof ServicesRoute
+  '/services/embedded-firmware': typeof ServicesEmbeddedFirmwareRoute
+  '/services/iot-hardware': typeof ServicesIotHardwareRoute
+  '/services/pcb-design': typeof ServicesPcbDesignRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/case-studies'
     | '/contact'
     | '/industries'
     | '/process'
-    | '/services'
+    | '/services/embedded-firmware'
+    | '/services/iot-hardware'
+    | '/services/pcb-design'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/industries' | '/process' | '/services'
+  to:
+    | '/'
+    | '/about'
+    | '/case-studies'
+    | '/contact'
+    | '/industries'
+    | '/process'
+    | '/services/embedded-firmware'
+    | '/services/iot-hardware'
+    | '/services/pcb-design'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/case-studies'
     | '/contact'
     | '/industries'
     | '/process'
-    | '/services'
+    | '/services/embedded-firmware'
+    | '/services/iot-hardware'
+    | '/services/pcb-design'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  CaseStudiesRoute: typeof CaseStudiesRoute
   ContactRoute: typeof ContactRoute
   IndustriesRoute: typeof IndustriesRoute
   ProcessRoute: typeof ProcessRoute
-  ServicesRoute: typeof ServicesRoute
+  ServicesEmbeddedFirmwareRoute: typeof ServicesEmbeddedFirmwareRoute
+  ServicesIotHardwareRoute: typeof ServicesIotHardwareRoute
+  ServicesPcbDesignRoute: typeof ServicesPcbDesignRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/services': {
-      id: '/services'
-      path: '/services'
-      fullPath: '/services'
-      preLoaderRoute: typeof ServicesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/process': {
       id: '/process'
       path: '/process'
@@ -132,6 +171,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/case-studies': {
+      id: '/case-studies'
+      path: '/case-studies'
+      fullPath: '/case-studies'
+      preLoaderRoute: typeof CaseStudiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -146,17 +192,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/pcb-design': {
+      id: '/services/pcb-design'
+      path: '/services/pcb-design'
+      fullPath: '/services/pcb-design'
+      preLoaderRoute: typeof ServicesPcbDesignRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/iot-hardware': {
+      id: '/services/iot-hardware'
+      path: '/services/iot-hardware'
+      fullPath: '/services/iot-hardware'
+      preLoaderRoute: typeof ServicesIotHardwareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/embedded-firmware': {
+      id: '/services/embedded-firmware'
+      path: '/services/embedded-firmware'
+      fullPath: '/services/embedded-firmware'
+      preLoaderRoute: typeof ServicesEmbeddedFirmwareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  CaseStudiesRoute: CaseStudiesRoute,
   ContactRoute: ContactRoute,
   IndustriesRoute: IndustriesRoute,
   ProcessRoute: ProcessRoute,
-  ServicesRoute: ServicesRoute,
+  ServicesEmbeddedFirmwareRoute: ServicesEmbeddedFirmwareRoute,
+  ServicesIotHardwareRoute: ServicesIotHardwareRoute,
+  ServicesPcbDesignRoute: ServicesPcbDesignRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
