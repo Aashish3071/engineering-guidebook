@@ -19,7 +19,7 @@ export function Footer() {
               Serving OEMs across 20+ countries.
             </p>
             <div className="mt-6 space-y-2.5 text-sm text-white/75">
-              <div className="flex items-start gap-2.5"><MapPin className="h-4 w-4 mt-0.5 shrink-0" /> Engineering Centre, Bengaluru · Design Studio, Amsterdam</div>
+              <div className="flex items-start gap-2.5"><MapPin className="h-4 w-4 mt-0.5 shrink-0" /> Engineering Centre, Bengaluru · Corporate Office, Delhi</div>
               <div className="flex items-center gap-2.5"><Mail className="h-4 w-4 shrink-0" /> engineering@axiom-electronics.com</div>
               <div className="flex items-center gap-2.5"><Phone className="h-4 w-4 shrink-0" /> +91 80 4718 9200</div>
             </div>

@@ -50,7 +50,7 @@ function About() {
             <ul className="mt-8 space-y-3">
               {[
                 "Founded 2009 by three ex-industry engineers",
-                "60+ engineers across Bengaluru and Amsterdam",
+                "60+ engineers across Bengaluru and Delhi",
                 "Retention rate: 4.6 years average per engineer",
                 "Client repeat-engagement rate: 78% across 15 years",
               ].map((s) => (

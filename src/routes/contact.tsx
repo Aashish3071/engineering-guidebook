@@ -54,8 +54,8 @@ function Contact() {
                   <div className="text-muted-foreground">Engineering & prototyping HQ</div>
                 </li>
                 <li>
-                  <div className="font-semibold text-navy-deep">Amsterdam · Netherlands</div>
-                  <div className="text-muted-foreground">European client success</div>
+                  <div className="font-semibold text-navy-deep">Delhi · India</div>
+                  <div className="text-muted-foreground">Corporate office B 80 okhla phase 1, first floor delhi 110020</div>
                 </li>
               </ul>
             </div>

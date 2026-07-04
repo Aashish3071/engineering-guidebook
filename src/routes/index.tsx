@@ -139,32 +139,46 @@ function WhatWeDo() {
 /* ─────────────────── INDUSTRIES — simple text, not icon grid ─────────────────── */
 
 function Industries() {
+  const industries = [
+    { name: "Industrial Automation", desc: "PLCs, motor drives, and CNC retrofits." },
+    { name: "Automotive & EV", desc: "BMS, motor controllers, and telematics." },
+    { name: "Medical Electronics", desc: "ISO 13485 compliant monitoring devices." },
+    { name: "Solar & Energy", desc: "MPPT trackers, inverters, and metering." },
+    { name: "Agriculture", desc: "Soil sensors, drone telemetry, and irrigation." },
+    { name: "Smart Home", desc: "HVAC controllers and security panels." },
+    { name: "Robotics", desc: "AGVs, servo controllers, and kinematics." },
+    { name: "Telecom", desc: "Base station monitoring and RRU controllers." },
+    { name: "Consumer Electronics", desc: "High-volume wearables and audio gear." },
+  ];
+
   return (
-    <section className="section-tight bg-white border-b border-hairline">
+    <section className="section bg-white border-b border-hairline">
       <div className="container-x">
-        <h2 className="text-2xl md:text-3xl font-semibold text-navy-deep tracking-tight">
-          Industries we work in
-        </h2>
-        <p className="mt-4 text-charcoal/70 max-w-3xl leading-relaxed">
-          Most of our work falls into industrial automation, automotive/EV, solar energy and
-          medical devices. We've also done projects in smart home, agriculture, telecom and
-          consumer electronics. The common thread is that these are regulated products where
-          getting the hardware right matters.
-        </p>
-        <div className="mt-8 flex flex-wrap gap-2">
-          {[
-            "Industrial Automation", "Automotive & EV", "Medical Electronics",
-            "Solar & Energy", "Agriculture", "Smart Home",
-            "Robotics", "Telecom", "Consumer Electronics",
-          ].map((ind) => (
-            <span key={ind} className="px-3 py-2 text-sm border border-hairline text-charcoal/80 bg-surface" style={{ borderRadius: 3 }}>
-              {ind}
-            </span>
+        <div className="max-w-2xl">
+          <h2 className="text-3xl md:text-4xl font-semibold text-navy-deep tracking-tight">
+            Industries we work in
+          </h2>
+          <p className="mt-4 text-charcoal/70 leading-relaxed">
+            Most of our work falls into industrial automation, automotive/EV, solar energy and
+            medical devices. The common thread is that these are regulated products where
+            getting the hardware right matters.
+          </p>
+        </div>
+        
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 border-t border-l border-hairline">
+          {industries.map((ind) => (
+            <div key={ind.name} className="p-6 md:p-8 border-b border-r border-hairline hover:bg-surface transition-colors group">
+              <h3 className="text-lg font-semibold text-navy-deep">{ind.name}</h3>
+              <p className="mt-2 text-sm text-charcoal/65">{ind.desc}</p>
+            </div>
           ))}
         </div>
-        <Link to="/industries" className="mt-6 inline-flex items-center gap-1.5 text-sm text-navy-deep font-medium">
-          More on industries <ArrowRight className="h-3.5 w-3.5" />
-        </Link>
+        
+        <div className="mt-8">
+          <Link to="/industries" className="inline-flex items-center gap-1.5 text-sm text-navy-deep font-medium group">
+            More on industries <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
       </div>
     </section>
   );
